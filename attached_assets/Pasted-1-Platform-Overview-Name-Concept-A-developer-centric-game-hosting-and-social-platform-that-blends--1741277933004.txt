@@ -1,0 +1,104 @@
+1. Platform Overview
+Name/Concept: A developer-centric game hosting and social platform that blends GitHub’s developer-friendly approach with Miniclip’s accessible, game-focused community.
+Primary Goal: Allow game developers (especially web/HTML5 creators) to easily host and share their games without paying platform fees, while providing social features to engage players and developers alike.
+Key Objectives
+Frictionless Game Hosting: Enable developers to upload and maintain their web games (HTML5, JavaScript, etc.).
+Social/Community Engagement: Provide user profiles, leaderboards, chat rooms, and game-specific discussion to foster a community of players and creators.
+Monetization Without Fees: Let developers integrate their own ads, donation links, or premium features, without the platform taking a cut.
+Scalable & Developer-Friendly: Focus on ease of use and low infrastructure cost to support future growth with minimal overhead.
+2. Core Features
+Developer Portal & Uploads
+
+Dashboard for developers to upload ZIP files or single-page web games.
+Versioning or basic release management for game updates.
+Analytics (in a later phase) to track game plays, user engagement, etc.
+Game Listing & Playing
+
+Each game has a dedicated page with an embedded iframe to play the game.
+Display the game’s title, description, rating, and any monetization links (e.g., donations, ads).
+“Play Now” interface that’s accessible across devices (desktop or mobile).
+Authentication & User Profiles
+
+GitHub OAuth (with potential expansion to Google, Discord, etc.).
+Users have profiles showing:
+Owned/Uploaded games
+Basic achievements or badges (like “First upload,” “100 plays,” etc.)
+Ability to follow developers to receive updates about new game releases.
+Leaderboards & Scores
+
+Per-game leaderboards that track top scores or high achievements.
+Possibly real-time updates via WebSockets or a managed real-time service.
+(In future) advanced weekly/monthly leaderboards or seasonal resets to keep engagement high.
+Social Chat & Forums
+
+Chat: Real-time text chat, either globally or per-game room.
+Discussion Threads: A simple comment or forum-like system on each game page for reviews, tips, or developer feedback.
+Basic moderation tools (for developers to remove inappropriate content on their game page).
+Monetization Hooks
+
+Let developers add:
+Donation links (e.g., Patreon, PayPal).
+Embedded ads (their own AdSense code or other ad network scripts).
+No mandatory platform fee; developer keeps 100% of revenue.
+Premium Platform Features (Future)
+
+Optionally, a premium user subscription model for ad-free browsing or special cosmetic perks.
+Developer advantage features, e.g. deeper analytics or priority listing, if desired.
+3. Reason & Value Proposition
+Target Audience: Indie game devs, hobbyists, and small studios that want a streamlined way to host HTML5 or web-based games without paying large marketplace fees.
+Why This Platform?
+Zero Platform Cut: Helps small devs monetize quickly.
+Community & Social: Encourages discovery and engagement, leading to more plays and feedback on games.
+Developer-Friendly Tools: GitHub OAuth, version control-like approach, potential for easy updates.
+Low Infrastructure Costs: Makes the service sustainable to run and scales as usage grows.
+4. UI & UX Notes
+While the exact design can evolve, here are some initial guidelines:
+
+Modern, Clean Look
+
+Light, minimalistic layout; think “developer dashboard” meets “gaming portal.”
+Clear typography and spacing — easy to skim for both devs and players.
+Intuitive Navigation
+
+Main Menu: “Games,” “Developers,” “Chat,” “Leaderboards,” “My Profile.”
+Clear “Upload Game” call-to-action on the developer’s dashboard.
+Quick links to “My Games,” “Favorite Games,” or “Followed Developers.”
+Game Page Layout
+
+Left/Top: Game title, rating, developer name.
+Center: Game iframe embed (large enough to feel immersive but still integrated in the page).
+Right/Below: Leaderboard preview, “Donate” button (if provided), brief description, user comments, and chat or forum link.
+Developer Dashboard
+
+Cards or Table listing each game with stats (plays, average rating).
+“Manage Versions” or “Update Game” actions.
+Settings for monetization or custom domain (future expansion).
+Simple analytics graphs (plays over time, rating trend) can appear in Phase 2.
+Profile Pages
+
+Avatar, Display Name and social links (GitHub, personal site).
+List of uploaded games, achievements, or badges.
+Buttons for “Follow” or “Message” (direct chat or forum mention).
+Chat Interface
+
+Basic, Slack-like or Discord-like interface with channels (e.g., #general, #game-<id>, #dev-talk).
+Possibly a persistent sidebar to switch between channels and direct messages.
+5. Summary for the SWE
+Purpose: Build a web-based platform (Next.js + NestJS recommended) where developers can upload HTML5 games, share them, and monetize directly. Users can discover and play these games with social features like chat and leaderboards.
+
+Technical Must-Haves:
+
+Authentication: GitHub OAuth.
+Game Upload: Store files on a cost-friendly object storage (e.g., Cloudflare R2).
+Database: PostgreSQL + Prisma for structured data (users, games, scores).
+Leaderboards & Chat: Real-time or near-real-time updates.
+No Platform Fees: Tools for devs to add their own donation link or ads.
+Deployment: Vercel for frontend, Fly.io or Railway for backend.
+UI Outline:
+
+Landing Page highlighting trending games, developer spotlights, sign-in button.
+Game Listing for browsing, searching, and filtering.
+Developer Dashboard with an upload form, game management, and basic analytics.
+Game Detail Page containing the iframe to play, a leaderboard, rating/review section, chat, donation link.
+Chat accessible from a universal UI element or a dedicated page.
+This summarization should guide initial development. As an MVP, focus on the core loop—game uploading, playing, scoring, and chatting. Further refinements (like advanced analytics or elaborate moderation) can come later, but the infrastructure should be designed to scale with those additions in mind.
